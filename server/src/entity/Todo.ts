@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn} from "typeorm";
 
 @ObjectType()
 @Entity()
@@ -13,15 +13,17 @@ export class Todo extends BaseEntity {
     @Field()
     todo: string;
 
-    @Column()
+    @Column({default: false})
     @Field()
     isCompleted: boolean;
 
-    @Column({type: "date"})
+    //TODO probably make a better system for deadline management
+
+    @Column()
     @Field()
     deadline: Date
 
-    @Column({type: "date"})
+    @CreateDateColumn()
     @Field()
     createdAt: Date
 
