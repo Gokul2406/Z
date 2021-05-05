@@ -4,11 +4,12 @@ import { ApolloServer } from "apollo-server-express"
 import TodoResolver from "./resolvers/TodoResolver";
 import { buildSchema } from "type-graphql"
 import express from "express";
+import UserResolver from "./resolvers/UserResolver";
 
 createConnection().then(async() => {
 	const apolloServer = new ApolloServer({
 		schema: await buildSchema({
-			resolvers: [TodoResolver],
+			resolvers: [TodoResolver, UserResolver],
 		})
 	})
 	const app = express()
