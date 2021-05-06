@@ -38,13 +38,31 @@ export default class UserResolver {
         return await User.find()
     }
 
-    @Mutation(() => User)
-    async addUser(
+    @Mutation(() => UserResponse)
+    async register(
         @Arg('options') options: UserInput
-    ): Promise<User> {
+    ): Promise<UserResponse> {
        const hashedPassword = await argon2.hash(options.password);
-       const user = User.create({username: options.username, password: hashedPassword}).save(); 
-       return user
+       if (options.username.length <= 2) {
+            return {
+                errors: [{
+                    field: "username",
+                    message: "The username is very short"
+                }]
+            }
+       }
+       if (options.password.length <= 8) {
+            return {
+                errors: [{
+                    field: "password",
+                    message: "The password is too short"
+                }]
+            }
+       }
+       const user =await  User.create({username: options.username, password: hashedPassword}).save(); 
+       return {
+            user
+       }
     }
     @Mutation(() => UserResponse)
     async login(
