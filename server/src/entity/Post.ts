@@ -3,7 +3,7 @@ import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn} fr
 
 @ObjectType()
 @Entity()
-export class Todo extends BaseEntity {
+export class Post extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     @Field()
@@ -11,17 +11,12 @@ export class Todo extends BaseEntity {
 
     @Column()
     @Field()
-    todo: string;
+    content: string;
 
-    @Column({default: false})
-    @Field()
-    isCompleted: boolean;
-
-    //TODO probably make a better system for deadline management
 
     @Column()
     @Field()
-    deadline: Date
+    title: string
 
     @CreateDateColumn()
     @Field()

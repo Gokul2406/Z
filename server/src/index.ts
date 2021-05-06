@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
 import { ApolloServer } from "apollo-server-express"
-import TodoResolver from "./resolvers/TodoResolver";
+import PostResolver from "./resolvers/PostResolver";
 import { buildSchema } from "type-graphql"
 import express from "express";
 import UserResolver from "./resolvers/UserResolver";
@@ -9,7 +9,7 @@ import UserResolver from "./resolvers/UserResolver";
 createConnection().then(async() => {
 	const apolloServer = new ApolloServer({
 		schema: await buildSchema({
-			resolvers: [TodoResolver, UserResolver],
+			resolvers: [PostResolver, UserResolver],
 		})
 	})
 	const app = express()
