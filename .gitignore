@@ -4,3 +4,5 @@ server/ormconfig.json
 server/.env
 server/build/**/*
 server/dist/**/*
+ui/.next/**/*
+ui/node_modules/**/*

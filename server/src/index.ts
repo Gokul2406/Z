@@ -16,7 +16,8 @@ const main = () => {
         name: 'quid',
         //TODO add .env file
         secret: "afsdadflsdhflsgjsjgpsg",
-        maxAge: 1000 * 60 * 60 * 24 * 365 * 10
+        maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
+        httpOnly: true,
     }))
 
 createConnection().then(async() => {
