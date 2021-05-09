@@ -1,17 +1,25 @@
-import {Heading, Flex, UnorderedList, ListItem, Button, Link} from "@chakra-ui/react"
+import {Heading, Flex,  Button, Link, useColorMode, useColorModeValue} from "@chakra-ui/react"
 import theme from "../themeconfig"
 
+
 const IndexPage = () => {
+	
+	const { toggleColorMode } = useColorMode()
+	const background = useColorModeValue("gray.100", "grat.700")
+
 	return (
 	<>
-	<Flex justifyContent="flex-end" alignItems="flex-end" width="200vh" p={25}>
+	<Flex justifyContent="flex-end" alignItems="flex-end" width="200vh" background={background} p={25}>
+	<Button alignSelf="flex-start" colorScheme="teal" justifySelf="flex-start" mr={10} onClick={toggleColorMode}>
+	Change Theme
+	</Button>
 	<Link href="/signup">
 	<Button mr={6} color="red.300">
 	Sign Up
 	</Button>
 	</Link>
-	<Link href="/login" color="teal.50">
-	<Button colorScheme="teal" textDecoration="none">
+	<Link href="/login">
+	<Button colorScheme="cyan" textDecoration="none">
 	Log In
 	</Button>
 	</Link>
