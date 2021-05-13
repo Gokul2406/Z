@@ -5,7 +5,7 @@ import theme from "../themeconfig"
 const IndexPage = () => {
 	
 	const { toggleColorMode } = useColorMode()
-	const background = useColorModeValue("gray.100", "grat.700")
+	const background = useColorModeValue("gray.100", "gray.700")
 
 	return (
 	<>
